@@ -65,17 +65,19 @@ namespace BotWarsClient.Bots
             }
 
             if (OpponentMoveHistory.LastOrDefault() == FlameThrower && DistanceToOpp() > 2 && OppFuel > 0)
-            {
                 return AttackWithAxe;
-            }
 
-            if (OpponentsLastMove == Move.Shunt && OppAdjacent() && MyDistanceFromEdge() <= 3) return Shunt();
+            if (OpponentsLastMove == Move.Shunt && OppAdjacent() && MyDistanceFromEdge() <= 3)
+                return Shunt();
 
-            if (OppAdjacent() && Flips > 0 && FlipOdds > 60) return Flip();
+            if (OppAdjacent() && Flips > 0 && FlipOdds > 60)
+                return Flip();
 
-            if (OpponentFlipped && OppAdjacent()) return AttackWithAxe;
+            if (OpponentFlipped && OppAdjacent())
+                return AttackWithAxe;
 
-            if (Fuel > 0 && DistanceToOpp() <= 2 && !OpponentFlipped) return Flame();
+            if (Fuel > 0 && DistanceToOpp() <= 2 && !OpponentFlipped)
+                return Flame();
 
             if (MyMoveHistory.LastOrDefault() == Move.MoveForwards 
                 && OpponentMoveHistory.LastOrDefault() == Move.MoveForwards
@@ -87,7 +89,8 @@ namespace BotWarsClient.Bots
             if (Fuel == 0 && FlipOdds > 60 && Flips >= 5 && DistanceToOpp() > 1 && MySide == Left)
                 return MoveForwards();
 
-            if (DistanceToOpp() > 2 && (MyDistanceFromCenter() > OppDistanceFromCenter())) return MoveForwards();
+            if (DistanceToOpp() > 2 && MyDistanceFromCenter() > OppDistanceFromCenter())
+                return MoveForwards();
 
             return AttackWithAxe;
         }
